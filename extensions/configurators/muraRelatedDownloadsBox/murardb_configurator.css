@@ -1,0 +1,20 @@
+#availableObjectParams dl {
+	margin-bottom: 6px;
+}
+#availableObjectParams dt {
+	padding: 2px;
+	margin-bottom: 2px;
+}
+#availableObjectParams label.blocklabel {
+	font-weight: bold;
+	display: inline-block;
+	width: 180px;
+}
+h4.mrdb-section {
+	margin: 0 0 4px;
+	padding: 3px 2px;
+	font-size: 1.1em;
+	font-weight: bold;
+	background-color: #fc3;
+	border-radius: 4px;
+}

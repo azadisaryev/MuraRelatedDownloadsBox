@@ -6,34 +6,40 @@ MuraRelatedDownloadsBox plugin for [Mura CMS](http://getmura.com/) enables you t
 **Important:** The MuraRelatedDownloadsBox will **not** be displayed unless the page has _visible_ child files (i.e. files with _Display_ option set to 'Yes' or 'Per start/stop date'). 
 
 +	You can use the following [mura] tag to insert MuraRelatedDownloadsBox inline with your content via the Content Editor:
+
 ````
 [mura]$.MuraRelatedDownloadsBox.dspDownloadsBox()[/mura]
 ````
+
 +	You can also just insert the following code into any layout template where you want the downloads box to appear:
+
 ````
 #$.MuraRelatedDownloadsBox.dspDownloadsBox()#
 ````
+
 Since the downloads box is not displayed if the page has no visible child files, you can include the above code in your standard theme layout templates - there is no need to create a special template for pages with the downloads box.
 
 See _'Configurable Options'_ section below for list of parameters you can pass to dspDownloadsBox() function and their default values.
 
 +	You can also insert the MuraRelatedDownloadsBox into a display region of your page as a Plugin display object on the [Content Objects] tab in Content Editor. Select _Plugins->MuraRelatedDownloadsBox_ under 'Available Content Objects' and add _MuraRelatedDownloadsBox_ object to one of page's display regions. Plugin's configurator will pop up allowing you to edit settings for this plugin instance if necessary (see 'Configurable Options' section below for more info). 
+
 Please keep in mind that, when added as plugin to your _main_ display region (page body), the downloads box will appear **below** the page body content. If you need the downloads box to appear _in-line_ with your page body content, use the [mura] tag option above._
 	
 ##Configurable Options
 The following parameters can be configured for the MuraRelatedDownloadsBox:
 
-+	**boxWidth** - width of the box container, in pixels. _Default=300_
-+	**boxTitle** - title of the box displayed in the header. Empty string = no header. _Default='Related Downloads'_
-+	**boxSubtitle** - subtitle of the box, displayed inside the box above the files list. Empty string = no subtitle. _Default=''_
-+	**boxPosition** - box alignment on page. Possible values: 'right' = inline, floated to the right; 'left' = inline, floated left; 'block' = as a block-level element. _Default='right'_
-+	**sortBy** - file object attribute to sort file list by. Possible values: 'orderno'=order the files are atteched to the page in; 'title'=file title; 'subtype'=subtype of the file content type; 'lastupdate'=date of last update; 'created'=date created. _Default='orderno'_
-+	**excludeFilesInNav** - show/hide files which are displayed in site navigation. 1=do not list files in site navigation; 0=show all files. _Default=0_
-+	**excludeFileExt** - list (comma-delimited) of file extensions to HIDE. _Default = '' (show all file extensions)_
-+	**excludeFileSubtype** - list of subtypes of file content type (comma-delimited) to HIDE. _Default='' (show all file sudtypes)_
-+	**showFileMeta** - show/hide file metadata (file size in MB and file extension) in the links text. 1=show; 0=hide. _Default=1_
+*	**boxWidth** - width of the box container, in pixels. _Default=300_
+*	**boxTitle** - title of the box displayed in the header. Empty string = no header. _Default='Related Downloads'_
+*	**boxSubtitle** - subtitle of the box, displayed inside the box above the files list. Empty string = no subtitle. _Default=''_
+*	**boxPosition** - box alignment on page. Possible values: 'right' = inline, floated to the right; 'left' = inline, floated left; 'block' = as a block-level element. _Default='right'_
+*	**sortBy** - file object attribute to sort file list by. Possible values: 'orderno'=order the files are atteched to the page in; 'title'=file title; 'subtype'=subtype of the file content type; 'lastupdate'=date of last update; 'created'=date created. _Default='orderno'_
+*	**excludeFilesInNav** - show/hide files which are displayed in site navigation. 1=do not list files in site navigation; 0=show all files. _Default=0_
+*	**excludeFileExt** - list (comma-delimited) of file extensions to HIDE. _Default = '' (show all file extensions)_
+*	**excludeFileSubtype** - list of subtypes of file content type (comma-delimited) to HIDE. _Default='' (show all file sudtypes)_
+*	**showFileMeta** - show/hide file metadata (file size in MB and file extension) in the links text. 1=show; 0=hide. _Default=1_
 
 If you want to over-ride any of the default parameters values, you can pass them to the dspDownloadsBox() function when inserting MuraRelatedDownloadsBox using the [mura] tag. Some Examples:
+
 ````
 <!-- set box width to 400px -->
 [mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(boxWidth=400)[/mura]

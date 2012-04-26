@@ -31,33 +31,34 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>MuraRelatedDownloadsBox™ Plugin</h1>
+        <h1>MuraRelatedDownloadsBox&trade; Plugin</h1>
 
-<p>MuraRelatedDownloadsBox plugin for <a href="http://getmura.com/">Mura CMS</a> enables you to add a 'related downloads box' to you page which displays a list of child files of the page as clickable links. Which files are included in the MuraRelatedDownloadsBox can be controlled through plugin options - see <em>'Configuration Options'</em> section below for details.</p>
+<p>MuraRelatedDownloadsBox plugin for <a href="http://getmura.com/" target="_blank">Mura CMS</a> enables you to add a 'related downloads box' to you page which displays a list of child files of the page as clickable links. Which files are included in the MuraRelatedDownloadsBox can be controlled through plugin options - see <a href="#config_options"><em>'Configuration Options'</em></a> section below for details.</p>
 
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 
-<p><strong>Important:</strong> The MuraRelatedDownloadsBox will <strong>not</strong> be displayed unless the page has <em>visible</em> child files (i.e. files with <em>Display</em> option set to 'Yes' or 'Per start/stop date'). </p>
+<p><strong>Important:</strong> MuraRelatedDownloadsBox will <strong>not</strong> be displayed unless the page has <em>visible</em> child files (i.e. files with <em>Display</em> option set to 'Yes' or 'Per start/stop date'). </p>
 
 <ul>
 <li>  You can use the following [mura] tag to insert MuraRelatedDownloadsBox inline with your content via the Content Editor:</li>
-</ul><pre><code>[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox()[/mura]
-</code></pre>
+</ul>
+<pre><code>[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox()[/mura]</code></pre>
 
 <ul>
 <li>  You can also just insert the following code into any layout template where you want the downloads box to appear:</li>
-</ul><pre><code>#$.MuraRelatedDownloadsBox.dspDownloadsBox()#
-</code></pre>
+</ul>
+<pre><code>#$.MuraRelatedDownloadsBox.dspDownloadsBox()#</code></pre>
 
 <p>Since the downloads box is not displayed if the page has no visible child files, you can include the above code in your standard theme layout templates - there is no need to create a special template for pages with the downloads box.</p>
 
-<p>See <em>'Configurable Options'</em> section below for list of parameters you can pass to dspDownloadsBox() function and their default values.</p>
+<p>See <a href="#config_options"><em>'Configurable Options'</em></a> section below for list of parameters you can pass to dspDownloadsBox() function and their default values.</p>
 
 <ul>
 <li>  You can also insert the MuraRelatedDownloadsBox into a display region of your page as a Plugin display object on the [Content Objects] tab in Content Editor. Select <em>Plugins-&gt;MuraRelatedDownloadsBox</em> under 'Available Content Objects' and add <em>MuraRelatedDownloadsBox</em> object to one of page's display regions. Plugin's configurator will pop up allowing you to edit settings for this plugin instance if necessary (see 'Configurable Options' section below for more info). </li>
-</ul><p>Please keep in mind that, when added as plugin to your <em>main</em> display region (page body), the downloads box will appear <strong>below</strong> the page body content. If you need the downloads box to appear <em>in-line</em> with your page body content, use the [mura] tag option above._</p>
+</ul>
+<p>Please keep in mind that, when added as plugin to your <em>main</em> display region (page body), the downloads box will appear <strong>below</strong> the page body content. If you need the downloads box to appear <em>in-line</em> with your page body content, use the [mura] tag option above._</p>
 
-<h2>Configurable Options</h2>
+<h2 id="config_options">Configurable Options</h2>
 
 <p>The following parameters can be configured for the MuraRelatedDownloadsBox:</p>
 
@@ -80,35 +81,44 @@
 </li>
 <li>  <strong>showFileMeta</strong> - show/hide file metadata (file size in MB and file extension) in the links text. 1=show; 0=hide. <em>Default=1</em>
 </li>
-</ul><p>If you want to over-ride any of the default parameters values, you can pass them to the dspDownloadsBox() function when inserting MuraRelatedDownloadsBox using the [mura] tag. Some Examples:</p>
+</ul>
+<p>If you want to over-ride any of the default parameters values, you can pass them to the dspDownloadsBox() function when inserting MuraRelatedDownloadsBox using the [mura] tag. Some examples:</p>
 
-<pre><code>&lt;!-- set box width to 400px --&gt;
-[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(boxWidth=400)[/mura]
+<pre><code>
+&lt;!-- set box width to 400px --&gt;
+[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( boxWidth=400 )[/mura]
+
 &lt;!-- remove header and add sub-title --&gt;
-[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(boxTitle='', boxSubtitle='Click on the links below to view/download files')[/mura]
+[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(
+  boxTitle='',
+  boxSubtitle='Click on the links below to view/download files'
+)[/mura]
+
 &lt;!-- do not include .doc and .xls files in the downloads list --&gt;
-[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(excludeFileExt='doc,xls')[/mura]
+[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( excludeFileExt='doc,xls' )[/mura]
+
 &lt;!-- do not include any files already included in site navigation --&gt;
-[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(excludeFilesInNav=1)[/mura]
+[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( excludeFilesInNav=1 )[/mura]
+
 &lt;!-- display files sorted by creation date --&gt;
-[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox(sortBy='created')[/mura]
+[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( sortBy='created' )[/mura]
 </code></pre>
 
-<h2>Custom Styling</h2>
+<h2 id="styling">Custom Styling</h2>
 
 <p>The default look of MuraRelatedDownloadsBox is styled in <em>{MuraInstallDir}/plugins/MuraRelatedDownloadsBox/assets/murarelateddownloadsbox.css</em> file.
 <strong>DO NOT edit this file</strong> - it will be over-writen when the plugin is updated, and all your changes will be lost!</p>
 
-<p>Instead, to customize the look of MuraRelatedDownloadsBox, add a <em>murardb.css</em> file into your site theme's /css folder. The plugin checks for existence of murardb.css file and includes it into the page's <code>&lt;head&gt;</code> section, over-riding default styles. You can copy the plugin's murarelateddownloadsbox.css file into your site theme's /css folder, rename it to murardb.css and edit as necessary. This way your changes to plugin's css will be preserved over updates.</p>
+<p>Instead, to customize the look of MuraRelatedDownloadsBox, add a <em>murarelateddownloadsbox.css</em> file into your site theme's /css folder. The plugin checks for existence of murardb.css file and includes it into the page's <code>&lt;head&gt;</code> section, over-riding default styles. You can copy the plugin's murarelateddownloadsbox.css file into your site theme's /css folder and edit it as necessary. This way your changes to plugin's css will be preserved over updates.</p>
 
 <h2>Tested With</h2>
 
 <ul>
-<li>  Mura CMS Core Version <strong>5.6.4859</strong>
-</li>
-<li>  Railo <strong>3.3.1</strong>
-</li>
-</ul><h2>Issues / Questions / Feature Requests and Code Contributions</h2>
+<li>  Mura CMS Core Version <strong>5.6+</strong></li>
+<li>  Railo <strong>3.3.1</strong></li>
+</ul>
+
+<h2>Issues / Questions / Feature Requests and Code Contributions</h2>
 
 <p>Please post your issues, questions and feature requests on the <a href="https://github.com/azadisaryev/MuraRelatedDownloadsBox/issues">Issues page</a>.
 Code contributions (fixes/features/etc) are always welcome. All pull requests should be sent to the repo's <em>develop</em> branch only. The <em>master</em> branch will always be the current stable release.</p>
@@ -116,6 +126,7 @@ Code contributions (fixes/features/etc) are always welcome. All pull requests sh
 <h2>License</h2>
 
 <p>MuraRelatedDownloadsBox™ Plugin is licensed under GNU General Public License version 2 (or later).</p>
+
       </section>
     </div>
 

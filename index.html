@@ -31,58 +31,77 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>MuraRelatedDownloadsBox&trade; Plugin</h1>
 
-<p>MuraRelatedDownloadsBox plugin for <a href="http://getmura.com/" target="_blank">Mura CMS</a> enables you to add a 'related downloads box' to you page which displays a list of child files of the page as clickable links. Which files are included in the MuraRelatedDownloadsBox can be controlled through plugin options - see <a href="#config_options"><em>'Configuration Options'</em></a> section below for details.</p>
+<h1>MuraRelatedDownloadsBox&trade; Plugin</h1>
+
+<p>MuraRelatedDownloadsBox plugin for <a href="http://getmura.com/" target="_blank">Mura CMS</a> enables you to add a 'related downloads box' to you page which displays a list of child files of the page as clickable links. Which files are included in the MuraRelatedDownloadsBox and other options can be easily configured - see <a href="#config_options"><em>'Configuration Options'</em></a> section below for details.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p><strong>Important:</strong> MuraRelatedDownloadsBox will <strong>not</strong> be displayed unless the page has <em>visible</em> child files (i.e. files with <em>Display</em> option set to 'Yes' or 'Per start/stop date'). </p>
+<p><strong>Note:</strong> MuraRelatedDownloadsBox will <strong>not</strong> be displayed on your page unless the page has <em>visible child files</em> (i.e. files with <em>Display</em> option set to 'Yes' or 'Per start/stop date').</p>
 
 <ul>
-<li>  You can use the following [mura] tag to insert MuraRelatedDownloadsBox inline with your content via the Content Editor:</li>
+<li>
+  You can use the following [mura] tag to insert MuraRelatedDownloadsBox inline with your content via the Content Editor:
+  <pre><code>[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox()[/mura]</code></pre>
+</li>
 </ul>
-<pre><code>[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox()[/mura]</code></pre>
 
 <ul>
-<li>  You can also just insert the following code into any layout template where you want the downloads box to appear:</li>
+<li>
+  You can also just insert the following code into any layout template where you want the downloads box to appear:
+
+  <pre><code>#$.MuraRelatedDownloadsBox.dspDownloadsBox()#</code></pre>
+
+  Since the downloads box is not displayed if the page has no visible child files, you can include the above code in your standard theme layout templates - there is no need to create a special template for pages with the downloads box.
+  <br><br>
+  See <a href="#config_options"><em>'Configurable Options'</em></a> section below for list of parameters you can pass to <em>dspDownloadsBox()</em> function and their default values.
+</li>
 </ul>
-<pre><code>#$.MuraRelatedDownloadsBox.dspDownloadsBox()#</code></pre>
-
-<p>Since the downloads box is not displayed if the page has no visible child files, you can include the above code in your standard theme layout templates - there is no need to create a special template for pages with the downloads box.</p>
-
-<p>See <a href="#config_options"><em>'Configurable Options'</em></a> section below for list of parameters you can pass to dspDownloadsBox() function and their default values.</p>
 
 <ul>
-<li>  You can also insert the MuraRelatedDownloadsBox into a display region of your page as a Plugin display object on the [Content Objects] tab in Content Editor. Select <em>Plugins-&gt;MuraRelatedDownloadsBox</em> under 'Available Content Objects' and add <em>MuraRelatedDownloadsBox</em> object to one of page's display regions. Plugin's configurator will pop up allowing you to edit settings for this plugin instance if necessary (see 'Configurable Options' section below for more info). </li>
+<li>
+  You can also insert the MuraRelatedDownloadsBox into a display region of your page as a Plugin display object on the [Content Objects] tab in Content Editor. Select <em>Plugins-&gt;MuraRelatedDownloadsBox</em> under 'Available Content Objects' and add <em>MuraRelatedDownloadsBox</em> object to one of page's display regions. Plugin's configurator will pop up allowing you to edit settings for this plugin instance if necessary (see 'Configurable Options' section below for more info).
+  <br><br>
+  Please keep in mind that, when added as plugin to your <em>main</em> display region (page body), the downloads box will appear <strong>below</strong> the page body content. If you need the downloads box to appear <em>in-line</em> with your page body content, use the [mura] tag option above.
+</li>
 </ul>
-<p>Please keep in mind that, when added as plugin to your <em>main</em> display region (page body), the downloads box will appear <strong>below</strong> the page body content. If you need the downloads box to appear <em>in-line</em> with your page body content, use the [mura] tag option above._</p>
 
 <h2 id="config_options">Configurable Options</h2>
 
 <p>The following parameters can be configured for the MuraRelatedDownloadsBox:</p>
 
 <ul>
-<li>  <strong>boxWidth</strong> - width of the box container, in pixels. <em>Default=300</em>
+<li>  
+  <strong>boxWidth</strong> - width of the box container, in pixels. <em>Default=300</em>
 </li>
-<li>  <strong>boxTitle</strong> - title of the box displayed in the header. Empty string = no header. <em>Default='Related Downloads'</em>
+<li>
+  <strong>boxTitle</strong> - title of the box displayed in the header. Empty string = no header. <em>Default='Related Downloads'</em>
 </li>
-<li>  <strong>boxSubtitle</strong> - subtitle of the box, displayed inside the box above the files list. Empty string = no subtitle. <em>Default=''</em>
+<li>
+  <strong>boxSubtitle</strong> - subtitle of the box, displayed inside the box above the files list. Empty string = no subtitle. <em>Default=''</em>
 </li>
-<li>  <strong>boxPosition</strong> - box alignment on page. Possible values: 'right' = inline, floated to the right; 'left' = inline, floated left; 'block' = as a block-level element. <em>Default='right'</em>
+<li>
+  <strong>boxPosition</strong> - box alignment on page. Possible values: 'right' = inline, floated to the right; 'left' = inline, floated left; 'block' = as a block-level element. <em>Default='right'</em>
 </li>
-<li>  <strong>sortBy</strong> - file object attribute to sort file list by. Possible values: 'orderno'=order the files are atteched to the page in; 'title'=file title; 'subtype'=subtype of the file content type; 'lastupdate'=date of last update; 'created'=date created. <em>Default='orderno'</em>
+<li>
+  <strong>sortBy</strong> - file object attribute to sort file list by. Possible values: 'orderno'=order the files are atteched to the page in; 'title'=file title; 'subtype'=subtype of the file content type; 'lastupdate'=date of last update; 'created'=date created. <em>Default='orderno'</em>
 </li>
-<li>  <strong>excludeFilesInNav</strong> - show/hide files which are displayed in site navigation. 1=do not list files in site navigation; 0=show all files. <em>Default=0</em>
+<li>
+  <strong>excludeFilesInNav</strong> - show/hide files which are displayed in site navigation. 1=do not list files in site navigation; 0=show all files. <em>Default=0</em>
 </li>
-<li>  <strong>excludeFileExt</strong> - list (comma-delimited) of file extensions to HIDE. <em>Default = '' (show all file extensions)</em>
+<li>
+  <strong>excludeFileExt</strong> - list (comma-delimited) of file extensions to HIDE. <em>Default = '' (show all file extensions)</em>
 </li>
-<li>  <strong>excludeFileSubtype</strong> - list of subtypes of file content type (comma-delimited) to HIDE. <em>Default='' (show all file sudtypes)</em>
+<li>
+  <strong>excludeFileSubtype</strong> - list of subtypes of file content type (comma-delimited) to HIDE. <em>Default='' (show all file sudtypes)</em>
 </li>
-<li>  <strong>showFileMeta</strong> - show/hide file metadata (file size in MB and file extension) in the links text. 1=show; 0=hide. <em>Default=1</em>
+<li>
+  <strong>showFileMeta</strong> - show/hide file metadata (file size in MB and file extension) in the links text. 1=show; 0=hide. <em>Default=1</em>
 </li>
 </ul>
-<p>If you want to over-ride any of the default parameters values, you can pass them to the dspDownloadsBox() function when inserting MuraRelatedDownloadsBox using the [mura] tag. Some examples:</p>
+
+<p>If you want to over-ride any of the default parameters values, you can pass them to the dspDownloadsBox() function when inserting MuraRelatedDownloadsBox using the [mura] tag. For example:</p>
 
 <pre><code>
 &lt;!-- set box width to 400px --&gt;
@@ -94,8 +113,8 @@
   boxSubtitle='Click on the links below to view/download files'
 )[/mura]
 
-&lt;!-- do not include .doc and .xls files in the downloads list --&gt;
-[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( excludeFileExt='doc,xls' )[/mura]
+&lt;!-- do not include .doc files in the downloads list --&gt;
+[mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( excludeFileExt='doc' )[/mura]
 
 &lt;!-- do not include any files already included in site navigation --&gt;
 [mura]$.MuraRelatedDownloadsBox.dspDownloadsBox( excludeFilesInNav=1 )[/mura]
@@ -114,14 +133,15 @@
 <h2>Tested With</h2>
 
 <ul>
-<li>  Mura CMS Core Version <strong>5.6+</strong></li>
-<li>  Railo <strong>3.3.1</strong></li>
+<li>Mura CMS Core Version <strong>5.6+</strong></li>
+<li>Railo <strong>3.3.1</strong></li>
+<li>Adobe ColdFusion 9.0.1</li>
 </ul>
 
 <h2>Issues / Questions / Feature Requests and Code Contributions</h2>
 
-<p>Please post your issues, questions and feature requests on the <a href="https://github.com/azadisaryev/MuraRelatedDownloadsBox/issues">Issues page</a>.
-Code contributions (fixes/features/etc) are always welcome. All pull requests should be sent to the repo's <em>develop</em> branch only. The <em>master</em> branch will always be the current stable release.</p>
+<p>Please post your issues, questions and feature requests on the <a href="https://github.com/azadisaryev/MuraRelatedDownloadsBox/issues">Issues page</a>.</p>
+<p>Code contributions (fixes/features/etc) are always welcome. All pull requests should be sent to the repo's <em>develop</em> branch only. The <em>master</em> branch will always be the current stable release.</p>
 
 <h2>License</h2>
 
@@ -137,8 +157,6 @@ Code contributions (fixes/features/etc) are always welcome. All pull requests sh
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
 
   </body>
 </html>
